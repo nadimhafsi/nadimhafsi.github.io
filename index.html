@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hafsi Nadim — Ingénieur Logiciel Embarqué, Systèmes Ferroviaires</title>
+<meta name="description" content="Portfolio de Hafsi Nadim, ingénieur logiciel embarqué spécialisé en supervision ferroviaire, firmware et protocoles bas niveau. Disponible pour un CDI ou CDD.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f1a;
+    --panel:#0f192a;
+    --panel-alt:#132135;
+    --border:#223049;
+    --border-soft:#1a2740;
+    --text:#e9eff9;
+    --muted:#8497b3;
+    --muted-dim:#5c6c85;
+    --accent:#ffb74a;
+    --accent-dim:#8a6229;
+    --go:#3ed9a0;
+    --go-dim:#1f6b52;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  }
+
+  body{
+    background:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.035) 1px, transparent 0) 0 0/28px 28px,
+      var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .skip-link{
+    position:absolute; left:-999px; top:0;
+    background:var(--accent); color:#151005; padding:10px 16px;
+    font-family:var(--mono); z-index:200;
+  }
+  .skip-link:focus{ left:12px; top:12px; }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:100;
+    background:rgba(10,15,26,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1080px; margin:0 auto;
+  }
+  .logo{
+    font-family:var(--mono); font-weight:600; font-size:15px;
+    display:flex; align-items:center; gap:8px; color:var(--text);
+  }
+  .logo .dot{ width:7px; height:7px; border-radius:50%; background:var(--go); box-shadow:0 0 8px var(--go); }
+  .navlinks{ display:flex; gap:26px; font-family:var(--mono); font-size:13px; color:var(--muted); }
+  .navlinks a:hover{ color:var(--accent); }
+  .navlinks{ display:none; }
+  @media(min-width:760px){ .navlinks{ display:flex; } }
+  .nav-cv{
+    font-family:var(--mono); font-size:13px; border:1px solid var(--border);
+    padding:8px 14px; border-radius:3px; color:var(--text);
+    transition:border-color .15s, color .15s;
+  }
+  .nav-cv:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 72px;
+    border-bottom:1px solid var(--border-soft);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(90deg, transparent, transparent 63px, var(--border-soft) 63px, var(--border-soft) 64px);
+    opacity:.35; pointer-events:none;
+  }
+  .hero-inner{
+    display:grid; grid-template-columns:1fr; gap:40px; position:relative;
+  }
+  @media(min-width:760px){
+    .hero-inner{ grid-template-columns:1.55fr auto; align-items:center; }
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.14em; color:var(--accent);
+    text-transform:uppercase; margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:var(--accent); display:inline-block; }
+
+  h1.name{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(40px, 7vw, 68px);
+    line-height:1.02; letter-spacing:-.01em;
+    margin-bottom:14px;
+  }
+  .role{
+    font-family:var(--display); font-weight:500; font-size:clamp(18px,2.4vw,23px);
+    color:var(--go); margin-bottom:20px;
+  }
+  .pitch{
+    color:var(--muted); font-size:16px; max-width:52ch; margin-bottom:28px;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:14px 22px; font-family:var(--mono); font-size:13px; color:var(--muted); margin-bottom:30px;
+  }
+  .hero-meta span{ display:flex; align-items:center; gap:7px; }
+
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:12px; }
+  .btn{
+    font-family:var(--mono); font-size:13.5px; padding:12px 20px; border-radius:3px;
+    display:inline-flex; align-items:center; gap:8px; transition:all .15s;
+    border:1px solid transparent;
+  }
+  .btn-primary{ background:var(--accent); color:#161006; font-weight:600; }
+  .btn-primary:hover{ background:#ffc772; }
+  .btn-ghost{ border-color:var(--border); color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--go); color:var(--go); }
+
+  /* status readout panel — echoes his BASC/PCC↔C200 simulator work */
+  .panel-card{
+    background:var(--panel); border:1px solid var(--border);
+    border-radius:6px; padding:22px; width:100%; max-width:280px;
+    font-family:var(--mono); justify-self:end;
+  }
+  .panel-photo{
+    width:100%; aspect-ratio:1/1; border-radius:4px; overflow:hidden;
+    border:1px solid var(--border-soft); margin-bottom:16px; background:var(--panel-alt);
+  }
+  .panel-photo img{ width:100%; height:100%; object-fit:cover; filter:grayscale(15%) contrast(1.05); }
+  .panel-row{
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:11.5px; padding:7px 0; border-top:1px dashed var(--border-soft);
+    color:var(--muted);
+  }
+  .panel-row:first-of-type{ border-top:none; }
+  .panel-row b{ color:var(--text); font-weight:500; }
+  .led{ width:7px; height:7px; border-radius:50%; display:inline-block; margin-right:6px; }
+  .led.go{ background:var(--go); box-shadow:0 0 6px var(--go); animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:76px 0; border-bottom:1px solid var(--border-soft); }
+  .kicker{
+    font-family:var(--mono); font-size:12px; letter-spacing:.14em; color:var(--muted-dim);
+    text-transform:uppercase; margin-bottom:10px;
+  }
+  h2.h{
+    font-family:var(--display); font-weight:600; font-size:clamp(26px,3.4vw,34px);
+    margin-bottom:34px;
+  }
+
+  /* ---------- PROFIL ---------- */
+  .profil-text{ max-width:70ch; color:var(--muted); font-size:16.5px; }
+  .profil-text strong{ color:var(--text); font-weight:600; }
+  .chips{ display:flex; flex-wrap:wrap; gap:9px; margin-top:26px; }
+  .chip{
+    font-family:var(--mono); font-size:12.5px; padding:6px 12px; border:1px solid var(--border);
+    border-radius:20px; color:var(--muted);
+  }
+
+  /* ---------- EXPERIENCE : voie ferrée ---------- */
+  .track{ position:relative; padding-left:40px; }
+  .track::before{
+    content:"";
+    position:absolute; left:9px; top:6px; bottom:6px; width:2px;
+    background:
+      repeating-linear-gradient(180deg, var(--border) 0 6px, transparent 6px 14px);
+  }
+  .stop{ position:relative; padding-bottom:44px; }
+  .stop:last-child{ padding-bottom:0; }
+  .stop-marker{
+    position:absolute; left:-40px; top:4px; width:20px; height:20px;
+    border-radius:50%; background:var(--panel); border:2px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .stop-marker .led{ margin:0; width:8px; height:8px; }
+  .stop-marker.active{ border-color:var(--go); }
+  .stop-head{
+    display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:8px 20px;
+    margin-bottom:6px;
+  }
+  .stop-role{ font-family:var(--display); font-size:19px; font-weight:600; }
+  .stop-date{ font-family:var(--mono); font-size:12.5px; color:var(--muted-dim); white-space:nowrap; }
+  .stop-org{ font-family:var(--mono); font-size:13.5px; color:var(--go); margin-bottom:12px; }
+  .stop-org .loc{ color:var(--muted-dim); }
+  .stop-bullets{ color:var(--muted); font-size:15px; }
+  .stop-bullets li{ position:relative; padding-left:16px; margin-bottom:6px; }
+  .stop-bullets li::before{ content:"›"; position:absolute; left:0; color:var(--accent-dim); }
+  .status-tag{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+    padding:2px 8px; border-radius:10px; border:1px solid var(--go-dim); color:var(--go);
+  }
+  .status-tag.done{ border-color:var(--border); color:var(--muted-dim); }
+
+  /* ---------- PROJETS ---------- */
+  .grid-3{ display:grid; grid-template-columns:1fr; gap:20px; }
+  @media(min-width:700px){ .grid-3{ grid-template-columns:repeat(3,1fr); } }
+  .proj{
+    background:var(--panel); border:1px solid var(--border); border-radius:6px;
+    padding:22px; display:flex; flex-direction:column; transition:border-color .15s, transform .15s;
+  }
+  .proj:hover{ border-color:var(--accent-dim); transform:translateY(-2px); }
+  .proj-num{ font-family:var(--mono); font-size:11.5px; color:var(--muted-dim); margin-bottom:10px; }
+  .proj h3{ font-family:var(--display); font-size:17.5px; font-weight:600; margin-bottom:10px; line-height:1.3; }
+  .proj p{ color:var(--muted); font-size:14.5px; margin-bottom:16px; flex-grow:1; }
+  .proj .tags{ display:flex; flex-wrap:wrap; gap:6px; }
+  .proj .tags span{ font-family:var(--mono); font-size:10.5px; color:var(--muted-dim); border:1px solid var(--border-soft); padding:3px 8px; border-radius:3px; }
+
+  /* ---------- COMPETENCES ---------- */
+  .skill-grid{ display:grid; grid-template-columns:1fr; gap:26px 40px; }
+  @media(min-width:700px){ .skill-grid{ grid-template-columns:1fr 1fr; } }
+  .skill-group h4{
+    font-family:var(--mono); font-size:12px; color:var(--accent); text-transform:uppercase; letter-spacing:.1em;
+    margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--border-soft);
+  }
+  .skill-group .chips{ margin-top:0; }
+
+  /* ---------- FORMATION ---------- */
+  .edu-item{ padding:20px 0; border-top:1px solid var(--border-soft); display:grid; gap:6px; }
+  .edu-item:first-child{ border-top:none; }
+  .edu-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 20px; }
+  .edu-degree{ font-family:var(--display); font-weight:600; font-size:17px; }
+  .edu-date{ font-family:var(--mono); font-size:12.5px; color:var(--muted-dim); }
+  .edu-school{ font-family:var(--mono); font-size:13.5px; color:var(--go); }
+  .edu-note{ color:var(--muted); font-size:14.5px; margin-top:4px; }
+
+  .sub-row{ display:grid; gap:40px; margin-top:44px; }
+  @media(min-width:700px){ .sub-row{ grid-template-columns:1fr 1fr; } }
+  .sub-row h4{ font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted-dim); margin-bottom:14px; }
+  .cert-list li{ font-size:14.5px; color:var(--muted); padding:7px 0; border-top:1px dashed var(--border-soft); }
+  .cert-list li:first-child{ border-top:none; }
+  .lang-row{ display:flex; justify-content:space-between; font-size:14.5px; padding:7px 0; border-top:1px dashed var(--border-soft); color:var(--muted); }
+  .lang-row:first-child{ border-top:none; }
+  .lang-row span:last-child{ font-family:var(--mono); font-size:12px; color:var(--go); }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ border-bottom:none; text-align:left; }
+  .contact-inner{
+    background:var(--panel); border:1px solid var(--border); border-radius:8px;
+    padding:48px 36px; text-align:center;
+  }
+  .contact h2{ font-family:var(--display); font-size:clamp(24px,3.6vw,32px); margin-bottom:14px; }
+  .contact p{ color:var(--muted); max-width:48ch; margin:0 auto 28px; }
+  .contact-actions{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:30px; }
+  .contact-meta{ display:flex; flex-wrap:wrap; justify-content:center; gap:22px; font-family:var(--mono); font-size:12.5px; color:var(--muted-dim); }
+
+  footer{ padding:28px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--muted-dim); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="site">
+  <nav class="nav">
+    <a class="logo" href="#top"><span class="dot"></span>HN·</a>
+    <div class="navlinks">
+      <a href="#profil">Profil</a>
+      <a href="#experience">Expérience</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#formation">Formation</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cv" href="assets/Hafsi_Nadim_CV.pdf" target="_blank" rel="noopener">CV ↓</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow">Systèmes embarqués · Supervision ferroviaire</div>
+        <h1 class="name">Hafsi&nbsp;Nadim</h1>
+        <div class="role">Ingénieur Logiciel Embarqué</div>
+        <p class="pitch">Du bus CAN aux salles de supervision : firmware, protocoles bas niveau et outils de test pour systèmes critiques — actuellement disponible pour une opportunité en <strong style="color:var(--text)">CDI ou CDD</strong>.</p>
+        <div class="hero-meta">
+          <span>📍 Paris, 75014</span>
+          <span>✉ nadim.hafsi@etudiant-isi.utm.tn</span>
+          <span>☎ 07 83 49 05 90</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="assets/Hafsi_Nadim_CV.pdf" target="_blank" rel="noopener">Télécharger le CV</a>
+          <a class="btn btn-ghost" href="https://github.com/nadimhafsi" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/nadimhafsi/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <div class="panel-card">
+        <div class="panel-photo"><img src="assets/nadim.jpg" alt="Portrait de Hafsi Nadim"></div>
+        <div class="panel-row"><span><span class="led go"></span>Statut</span><b>Disponible</b></div>
+        <div class="panel-row"><span>Poste</span><b>Siemens Mobility</b></div>
+        <div class="panel-row"><span>Liaison</span><b>PCC ⇄ C200 OK</b></div>
+        <div class="panel-row"><span>Base</span><b>Toulouse / Paris</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="profil">
+    <div class="wrap">
+      <div class="kicker">// Profil</div>
+      <h2 class="h">Ingénieur qui parle firmware et supervision</h2>
+      <p class="profil-text">Ingénieur diplômé d'un double-diplôme entre l'<strong>ISI Tunis</strong> et <strong>Sorbonne Paris Nord</strong> (Sup Galilée), spécialisé en systèmes embarqués et instrumentation. Aujourd'hui chez <strong>Siemens Mobility</strong>, il intervient sur la supervision ferroviaire du métro de Toulouse : migration de plateformes critiques (PCC/SPOCC) et développement d'outils de test pour les liaisons série entre postes de commande. Son parcours couvre aussi bien le bas niveau (STM32, bus CAN, appels système Unix/Linux) que l'instrumentation appliquée, du banc de test biomédical à la passerelle IoT industrielle.</p>
+      <div class="chips">
+        <span class="chip">Supervision ferroviaire</span>
+        <span class="chip">Firmware STM32/ESP32</span>
+        <span class="chip">Bus CAN</span>
+        <span class="chip">Linux embarqué</span>
+        <span class="chip">Python (Tkinter, pyserial)</span>
+        <span class="chip">Instrumentation</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="kicker">// Expérience professionnelle</div>
+      <h2 class="h">Parcours</h2>
+
+      <div class="track">
+
+        <div class="stop">
+          <div class="stop-marker active"><span class="led go"></span></div>
+          <div class="stop-head">
+            <span class="stop-role">Ingénieur logiciel supervision ferroviaire</span>
+            <span class="stop-date">02/2026 — Présent</span>
+          </div>
+          <div class="stop-org">Siemens Mobility <span class="loc">· Toulouse, France</span> <span class="status-tag" style="margin-left:8px;">En cours</span></div>
+          <ul class="stop-bullets">
+            <li>Migration de la plateforme logicielle de supervision ferroviaire (PCC/SPOCC) de la voie d'essais du métro de Toulouse, de Windows XP vers Windows 10.</li>
+            <li>Développement d'un simulateur de trames série BASC en Python (Tkinter, pyserial) pour tester la communication PCC ↔ C200 sur le métro de Toulouse.</li>
+          </ul>
+        </div>
+
+        <div class="stop">
+          <div class="stop-marker"><span class="led" style="background:var(--muted-dim);"></span></div>
+          <div class="stop-head">
+            <span class="stop-role">Conception d'un banc de test biomédical</span>
+            <span class="stop-date">06/2025 — 07/2025</span>
+          </div>
+          <div class="stop-org">VAir France <span class="loc">· Paris, France</span> <span class="status-tag done" style="margin-left:8px;">Terminé</span></div>
+          <ul class="stop-bullets">
+            <li>Conception d'un banc de test simulant la respiration humaine : régulation de température, génération de micro-gouttelettes et automatisation via ESP32.</li>
+          </ul>
+        </div>
+
+        <div class="stop">
+          <div class="stop-marker"><span class="led" style="background:var(--muted-dim);"></span></div>
+          <div class="stop-head">
+            <span class="stop-role">Conception d'une passerelle IoT pour PLC</span>
+            <span class="stop-date">02/2022 — 06/2022</span>
+          </div>
+          <div class="stop-org">AS2E Automation <span class="loc">· Tunis, Tunisie</span> <span class="status-tag done" style="margin-left:8px;">Terminé</span></div>
+          <ul class="stop-bullets">
+            <li>Conception d'une passerelle IoT pour la commande et la supervision de PLC — stack C, STM32, UART, Ladder, GSM/GPRS, Ethernet, SQL, PHP, HTML/CSS, LwIP.</li>
+          </ul>
+        </div>
+
+        <div class="stop">
+          <div class="stop-marker"><span class="led" style="background:var(--muted-dim);"></span></div>
+          <div class="stop-head">
+            <span class="stop-role">Stage d'observation en test et diagnostic</span>
+            <span class="stop-date">06/2021 — 07/2021</span>
+          </div>
+          <div class="stop-org">Fixtronix <span class="loc">· Tunis, Tunisie</span> <span class="status-tag done" style="margin-left:8px;">Terminé</span></div>
+          <ul class="stop-bullets">
+            <li>Réalisation de tests et diagnostics de composants et cartes électroniques.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <div class="wrap">
+      <div class="kicker">// Projets académiques &amp; personnels</div>
+      <h2 class="h">Catalogue de projets</h2>
+      <div class="grid-3">
+
+        <div class="proj">
+          <div class="proj-num">PRJ.01</div>
+          <h3>Contrôle des systèmes HVAC dans un train</h3>
+          <p>Système de contrôle HVAC pour train avec Raspberry Pi, module Automation HATMINI et communication MQTT.</p>
+          <div class="tags"><span>Raspberry Pi</span><span>MQTT</span><span>Python</span><span>Capteurs</span></div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-num">PRJ.02</div>
+          <h3>Passerelle CAN / Ethernet — architecture véhicule</h3>
+          <p>Simulation d'une architecture de calculateurs automobiles : configuration bas niveau du STM32 (identifiants, filtres, interruptions, modes loopback/normal) et transmission vers Raspberry Pi via Ethernet/UDP (LWIP).</p>
+          <div class="tags"><span>STM32</span><span>Bus CAN</span><span>LWIP</span><span>UDP</span></div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-num">PRJ.03</div>
+          <h3>Interpréteur de commande Shell</h3>
+          <p>Shell interpréteur développé en C sous Ubuntu : appels système, gestion de processus et parsing de commandes.</p>
+          <div class="tags"><span>C</span><span>Unix</span><span>Appels système</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="competences">
+    <div class="wrap">
+      <div class="kicker">// Schéma — compétences techniques</div>
+      <h2 class="h">Stack technique</h2>
+      <div class="skill-grid">
+
+        <div class="skill-group">
+          <h4>Langages</h4>
+          <div class="chips">
+            <span class="chip">C/C++</span><span class="chip">C embarqué</span><span class="chip">Python</span>
+            <span class="chip">Java</span><span class="chip">Assembleur</span><span class="chip">VHDL</span><span class="chip">Verilog</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Cartes / Microcontrôleurs</h4>
+          <div class="chips">
+            <span class="chip">PIC</span><span class="chip">STM32</span><span class="chip">ESP32</span>
+            <span class="chip">Arduino</span><span class="chip">Raspberry Pi</span><span class="chip">Red Pitaya</span><span class="chip">ZedBoard</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Protocoles série avancés</h4>
+          <div class="chips">
+            <span class="chip">CAN</span><span class="chip">LIN</span><span class="chip">CAN FD</span><span class="chip">Modbus TCP/RTU</span><span class="chip">UART</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Programmation système Unix/Linux</h4>
+          <div class="chips">
+            <span class="chip">Appels système</span><span class="chip">Processus</span><span class="chip">Threads / POSIX</span>
+            <span class="chip">Pthreads</span><span class="chip">IPC</span><span class="chip">Sémaphores</span><span class="chip">Mutex</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>OS &amp; middleware</h4>
+          <div class="chips">
+            <span class="chip">FreeRTOS</span><span class="chip">Linux embarqué</span><span class="chip">Buildroot</span><span class="chip">QEMU</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Bases de données</h4>
+          <div class="chips">
+            <span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Cassandra</span><span class="chip">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Outils &amp; méthodologies</h4>
+          <div class="chips">
+            <span class="chip">Agile/Scrum</span><span class="chip">JIRA</span><span class="chip">Git</span><span class="chip">Makefile</span>
+            <span class="chip">CMake</span><span class="chip">GCC / GDB</span><span class="chip">Bash</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h4>Firmware &amp; validation</h4>
+          <div class="chips">
+            <span class="chip">Développement firmware</span><span class="chip">Cross compilation</span><span class="chip">Bootloader</span>
+            <span class="chip">Tests unitaires</span><span class="chip">Intégration/validation</span><span class="chip">Ladder</span><span class="chip">OBD2</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="formation">
+    <div class="wrap">
+      <div class="kicker">// Formation</div>
+      <h2 class="h">Parcours académique</h2>
+
+      <div class="edu-item">
+        <div class="edu-top">
+          <span class="edu-degree">Ingénierie en Systèmes Embarqués et Instrumentation — Double diplôme</span>
+          <span class="edu-date">09/2024 — 09/2026</span>
+        </div>
+        <div class="edu-school">Sup Galilée, Université Sorbonne Paris Nord · Paris, France</div>
+        <div class="edu-note">Cours : systèmes asservis, Linux embarqué, normes industrielles, infrastructure logicielle, Docker.</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-top">
+          <span class="edu-degree">Ingénierie en Systèmes Embarqués et Objets Connectés</span>
+          <span class="edu-date">09/2022 — 09/2024</span>
+        </div>
+        <div class="edu-school">Institut Supérieur d'Informatique (ISI) · Tunis, Tunisie</div>
+        <div class="edu-note">Cours : IoT, microcontrôleurs, bus CAN, Linux embarqué, programmation bas niveau. Résultat : premier de promotion, Bourse d'Excellence du Gouvernement Français.</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-top">
+          <span class="edu-degree">Licence en Automatique et Informatique Industrielle</span>
+          <span class="edu-date">09/2019 — 06/2022</span>
+        </div>
+        <div class="edu-school">ISTIC · Tunis, Tunisie</div>
+      </div>
+
+      <div class="sub-row">
+        <div>
+          <h4>Certificats</h4>
+          <ul class="cert-list">
+            <li>C embarqué — Udemy</li>
+            <li>ARM Cortex-M Software Development</li>
+            <li>Arm Cortex-M Processors Overview</li>
+            <li>Programmation C++ — Coursera</li>
+            <li>Azure Data Fundamentals</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Langues</h4>
+          <div class="lang-row"><span>Français</span><span>Natif</span></div>
+          <div class="lang-row"><span>Anglais</span><span>Courant</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="contact-inner">
+        <h2>Construisons quelque chose ensemble.</h2>
+        <p>Disponible pour une opportunité en CDI ou CDD en systèmes embarqués, supervision ferroviaire ou instrumentation — basé à Paris, ouvert à la mobilité.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="mailto:nadim.hafsi@etudiant-isi.utm.tn">Envoyer un email</a>
+          <a class="btn btn-ghost" href="tel:+33783490590">Appeler</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/nadimhafsi/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn btn-ghost" href="https://github.com/nadimhafsi" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <div class="contact-meta">
+          <span>nadim.hafsi@etudiant-isi.utm.tn</span>
+          <span>+33 7 83 49 05 90</span>
+          <span>Paris, 75014</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 Hafsi Nadim. Construit avec soin — hébergé sur GitHub Pages.</footer>
+
+</body>
+</html>

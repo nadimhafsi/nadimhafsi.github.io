@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hafsi Nadim — Ingénieur Systèmes Embarqués, Automobile &amp; Ferroviaire</title>
-<meta name="description" content="Portfolio de Hafsi Nadim, ingénieur systèmes embarqués (automobile et ferroviaire) : firmware, bus CAN, ADAS, supervision ferroviaire. À la recherche d'un CDI, disponible immédiatement, mobilité partout en France.">
+<meta name="description" content="Portfolio de Hafsi Nadim, ingénieur systèmes embarqués (automobile et ferroviaire) : firmware, bus CAN, ADAS, supervision ferroviaire. À la recherche d'un CDI, disponible immédiatement, mobilité nationale.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -55,14 +55,8 @@
   .navlinks a:hover{color:#fff;}
   @media(min-width:820px){.navlinks{display:flex;}}
 
-  .cvmenu{position:relative;}
-  .cvmenu summary{list-style:none;cursor:pointer;font-weight:600;font-size:15px;color:#fff;border:1.5px solid #5d739e;padding:7px 14px;border-radius:4px;}
-  .cvmenu summary::-webkit-details-marker{display:none;}
-  .cvmenu summary:hover,.cvmenu[open] summary{border-color:var(--rail);}
-  .cvmenu .menu{position:absolute;right:0;top:calc(100% + 8px);background:#fff;color:var(--ink);border-radius:6px;min-width:230px;box-shadow:0 12px 30px rgba(8,16,36,.35);overflow:hidden;}
-  .cvmenu .menu a{display:flex;align-items:center;gap:10px;padding:12px 16px;font-weight:500;font-size:15.5px;}
-  .cvmenu .menu a+a{border-top:1px solid var(--line);}
-  .cvmenu .menu a:hover{background:var(--paper);}
+  .nav-cv{font-weight:600;font-size:15px;color:#fff;border:1.5px solid #5d739e;padding:7px 14px;border-radius:4px;}
+  .nav-cv:hover{border-color:var(--rail);}
 
   .dot{width:12px;height:12px;border-radius:3px;display:inline-block;flex:none;}
   .dot.rail{background:var(--rail);}
@@ -254,13 +248,7 @@
       <a href="#formation">Formation</a>
       <a href="#contact">Contact</a>
     </div>
-    <details class="cvmenu" id="cvmenu">
-      <summary>Télécharger le CV</summary>
-      <div class="menu">
-        <a href="assets/CV_Hafsi_Nadim_Automobile.pdf" target="_blank" rel="noopener"><span class="dot auto"></span>CV Automobile</a>
-        <a href="assets/CV_Hafsi_Nadim_Ferroviaire.pdf" target="_blank" rel="noopener"><span class="dot rail"></span>CV Ferroviaire</a>
-      </div>
-    </details>
+    <a class="nav-cv" href="assets/CV_Hafsi_Nadim.pdf" target="_blank" rel="noopener">Télécharger le CV</a>
   </nav>
 </header>
 
@@ -273,15 +261,14 @@
           <h1 class="name">Hafsi Nadim</h1>
           <div class="role">Ingénieur Systèmes Embarqués</div>
           <p class="pitch">Ingénieur systèmes embarqués passionné, avec 2 ans d’expérience à temps partiel en développement logiciel embarqué. Expérience dans les secteurs de l’automobile et du ferroviaire.</p>
-          <div class="avail">À la recherche d’un CDI · Disponible immédiatement · Mobilité partout en France</div>
+          <div class="avail">À la recherche d’un CDI · Disponible immédiatement · Mobilité nationale</div>
           <div class="contact-line">
             <span>Toulouse, 31100</span>
             <a href="mailto:nadimhafsi20@gmail.com">nadimhafsi20@gmail.com</a>
             <a href="tel:+33783490590">07 83 49 05 90</a>
           </div>
           <div class="actions">
-            <a class="btn btn-auto" href="assets/CV_Hafsi_Nadim_Automobile.pdf" target="_blank" rel="noopener">CV Automobile</a>
-            <a class="btn btn-rail" href="assets/CV_Hafsi_Nadim_Ferroviaire.pdf" target="_blank" rel="noopener">CV Ferroviaire</a>
+            <a class="btn btn-rail" href="assets/CV_Hafsi_Nadim.pdf" target="_blank" rel="noopener">Télécharger le CV</a>
             <a class="btn btn-line" href="https://github.com/nadimhafsi" target="_blank" rel="noopener">GitHub</a>
             <a class="btn btn-line" href="https://www.linkedin.com/in/nadimhafsi/" target="_blank" rel="noopener">LinkedIn</a>
           </div>
@@ -631,17 +618,14 @@
   <section class="s last" id="contact">
     <div class="wrap">
       <div class="contact-box">
-        <h2>Disponible en CDI, partout en France.</h2>
-        <p>Basé à Toulouse, disponible immédiatement. Automobile, ferroviaire ou systèmes embarqués : écrivez-moi ou téléchargez le CV du secteur qui vous concerne.</p>
+        <h2>Disponible immédiatement en CDI, mobilité nationale.</h2>
+        <p>Basé à Toulouse. Automobile, ferroviaire ou systèmes embarqués : écrivez-moi ou téléchargez mon CV.</p>
         <div class="actions">
           <a class="btn btn-rail" href="mailto:nadimhafsi20@gmail.com">Envoyer un email</a>
           <a class="btn btn-line" href="tel:+33783490590">Appeler</a>
+          <a class="btn btn-line" href="assets/CV_Hafsi_Nadim.pdf" target="_blank" rel="noopener">Télécharger le CV</a>
           <a class="btn btn-line" href="https://www.linkedin.com/in/nadimhafsi/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn btn-line" href="https://github.com/nadimhafsi" target="_blank" rel="noopener">GitHub</a>
-        </div>
-        <div class="actions" style="margin-top:12px">
-          <a class="btn btn-auto" href="assets/CV_Hafsi_Nadim_Automobile.pdf" target="_blank" rel="noopener">CV Automobile</a>
-          <a class="btn btn-auto" style="background:var(--rail);color:#1a1300" href="assets/CV_Hafsi_Nadim_Ferroviaire.pdf" target="_blank" rel="noopener">CV Ferroviaire</a>
         </div>
         <div class="contact-meta">
           <span>nadimhafsi20@gmail.com</span>
@@ -673,12 +657,6 @@
     });
   })();
 
-  // Ferme le menu CV au clic extérieur ou avec Échap
-  (function(){
-    var menu = document.getElementById('cvmenu');
-    document.addEventListener('click', function(e){ if(menu.open && !menu.contains(e.target)) menu.open = false; });
-    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') menu.open = false; });
-  })();
 </script>
 </body>
 </html>
